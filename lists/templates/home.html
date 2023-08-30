@@ -2,7 +2,10 @@
 <title>To-Do</title>
 <body>
     <h1>Motherfucker</h1>
-    <input id="id_new_item" placeholder="Enter a to-do item" />
+    <form method="POST">
+        <input id="id_new_item" placeholder="Enter a to-do item"/>
+        {% csrf_token %}
+    </form>
     <table id="id_list_table" />
 </body>
 </html>
