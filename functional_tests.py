@@ -1,6 +1,17 @@
 from selenium import webdriver
+import unittest
 
-browser = webdriver.Chrome()
-browser.get("http://127.0.0.1:8000")
-assert 'The install worked successfully! Congratulations!' in browser.title
-print('OK')
+class NewVisitorTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.browser = webdriver.Chrome()
+    
+    def tearDown(self) -> None:
+        self.browser.quit()
+    
+    def test_can_start_a_list_and_retrieve_it_later(self):
+        self.browser.get("http://127.0.0.1:8000")
+        self.assertIn('The install worked successfully! Congratulations!', self.browser.title)
+        self.fail('Finish the test!')
+
+if __name__ == '__main__':
+    unittest.main(warnings='ignore')
